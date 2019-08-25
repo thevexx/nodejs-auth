@@ -8,7 +8,7 @@ services:
       - MONGO_ADDRESS=mongo
       - APP_PATH=/app
     volumes:
-      - ./data-redis:/data
+      - redisdata:/data
     ports:
       - "6379:6379"
 
@@ -17,6 +17,10 @@ services:
     image: mongo
     restart: always
     volumes:
-      - ./data-mongo:/data/db
+      - mongodata:/data/db
     ports:
       - "27017:27017"
+
+volumes:
+  mongodata:
+  redisdata:
