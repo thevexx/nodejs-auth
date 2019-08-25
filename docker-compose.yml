@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  redis:
+    image: redis
+    restart: always
+    environment:
+      - MONGO_ADDRESS=mongo
+      - APP_PATH=/app
+    volumes:
+      - ./data-redis:/data
+    ports:
+      - "6379:6379"
+
+  mongo:
+    container_name: mongo
+    image: mongo
+    restart: always
+    volumes:
+      - ./data-mongo:/data/db
+    ports:
+      - "27017:27017"
